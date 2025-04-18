@@ -1,4 +1,5 @@
-This is a short platformer I developed in Godot 4 using GDScript (dynamically typed language similar to python) as a school project for biology. It is based on digestion and has many cool facts inside!
+# What is this?
+This is a short platformer I developed in **Godot 4** using **GDScript** (dynamically typed language similar to Python) as a school project for Biology. It is based on digestion and has many cool facts inside!
 
 All the visuals and programming was done by myself, with content (text) by Aaden Lam.
 
@@ -16,14 +17,13 @@ Go to the release page here: https://github.com/JeremyLikesCats/Digestion-Game/r
 
 ![A cutscene](https://github.com/JeremyLikesCats/Digestion-Game/blob/main/Screenshots/Peristalsis.png?raw=true)
 
-## Reflection
+# Reflection
 
-Some things I could have improved on:
+## Some things I could have improved on:
 1. Organization
 2. More efficient/cleaner code
 3. Music!
 4. Better-feeling movement
 As this was a project that I mostly did for fun, much of the code and organization was rushed. 
 
-I did learn a lot from this project, not only about programming but also about things like art as well!
-
+I did learn a lot from this project, not only about programming but also about things like pixel art as well!
