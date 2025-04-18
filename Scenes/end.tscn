@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5k2ng57ec3or"]
+
+[ext_resource type="Texture2D" uid="uid://dvbmwmktxbywx" path="res://Sprites/maxresdefault.jpg" id="1_7x0l4"]
+
+[sub_resource type="Theme" id="Theme_3gjb0"]
+default_font_size = 500
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1070, 811)
+scale = Vector2(1.88, 2.88)
+texture = ExtResource("1_7x0l4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 31.0
+offset_top = 329.0
+offset_right = 2187.0
+offset_bottom = 1378.0
+theme = SubResource("Theme_3gjb0")
+text = "You win!"
