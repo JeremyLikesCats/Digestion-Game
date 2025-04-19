@@ -3,8 +3,37 @@ This is a short platformer I developed in **Godot 4** using **GDScript** (dynami
 
 All the visuals and programming was done by myself, with content (text) by Aaden Lam.
 
-# Where can I play?
+# Installation
 Go to the release page here: https://github.com/JeremyLikesCats/Digestion-Game/releases/tag/v1.0.0
+## Installation steps
+
+### Mac
+Download the *.dmg file for Mac.
+
+> **NOTE:** To bypass Gatekeeper, look here: https://support.apple.com/guide/mac-help/mh40616/mac.
+This is because I have not enrolled in the apple developer program, and can't sign apps!
+
+> For windows and linux, ensure all files are in the same folder!
+### Windows
+Download the *.exe file and the *.pck for Windows.
+Run with the *.exe file.
+
+### Linux
+Download the *.sh file, *.pck file and the *.x86_64 file for linux.
+Make the .sh file and .x86_64 file executable by the following commands:
+```bash
+chmod +x /location/to/.sh/file
+chmod +x /location/to/.x86_64/file
+```
+Then run the game with:
+```bash
+./location/to/.sh/file
+```
+
+> **NOTE:** To run natively on wayland, run with --display-driver wayland, as in:
+```bash
+./location/to/.sh/file --display-driver wayland
+```
 
 # Screenshots
 ![Screenshot of Bile](https://github.com/JeremyLikesCats/Digestion-Game/blob/main/Screenshots/Bile.png?raw=true)
