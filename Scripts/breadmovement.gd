@@ -159,7 +159,7 @@ func _on_jumptut_body_entered(body: Node2D) -> void:
 		await dialogue("USE SPACEBAR TO JUMP! AND BE CAREFUL!!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
 		dialogue("BYE BYE! YOU CAN MOVE NOW BY THE WAY!",cs.get_node("dialogue"),true,0.2,0.2,2)
 		cs.get_node("Sprite2D").flip_h = true
-		cs.tween(-300,0)
+		cs.tween(-600,0)
 		canmove = true
 		canjump = true
 		get_parent().get_node("jumptut").queue_free()
@@ -230,7 +230,7 @@ func _on_small_intestine_body_entered(body: Node2D) -> void:
 		var textbox = get_parent().get_node("CanvasLayer2/RichTextLabel")
 		var textbox2 = get_parent().get_node("CanvasLayer2/RichTextLabel2")
 		camera.apply_shake(30)
-		get_parent().get_node("CanvasLayer/Sprite2D").texture = load("res://Sprites/bg.png")
+		get_parent().get_node("CanvasLayer/Background").texture = load("res://Sprites/bg.png")
 		dialogue("Small intestine",textbox,true,0.5,0.5,3)
 		await dialogue("Dangers such as villi and bile reside here.",textbox2,true,0.5,0.5,3)
 		
