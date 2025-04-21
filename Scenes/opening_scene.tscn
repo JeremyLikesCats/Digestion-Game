@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://v3qaypejlfju"]
+[gd_scene load_steps=11 format=3 uid="uid://v3qaypejlfju"]
 
-[ext_resource type="Texture2D" uid="uid://dm8d16ntlpmkt" path="res://Sprites/Intestine Pixel Art.png" id="2_v7tyo"]
+[ext_resource type="Texture2D" uid="uid://spw2h2tq2vjt" path="res://Sprites/Opening_scene.png" id="1_7g0xc"]
 [ext_resource type="Script" path="res://Scripts/mouth_sprite.gd" id="3_46jiq"]
 
 [sub_resource type="GDScript" id="GDScript_6c8mq"]
@@ -17,8 +17,55 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="Theme" id="Theme_h84hp"]
-default_font_size = 200
+[sub_resource type="AtlasTexture" id="AtlasTexture_bja6t"]
+atlas = ExtResource("1_7g0xc")
+region = Rect2(0, 0, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o88ed"]
+atlas = ExtResource("1_7g0xc")
+region = Rect2(64, 0, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p78sr"]
+atlas = ExtResource("1_7g0xc")
+region = Rect2(128, 0, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x58vc"]
+atlas = ExtResource("1_7g0xc")
+region = Rect2(192, 0, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqfok"]
+atlas = ExtResource("1_7g0xc")
+region = Rect2(256, 0, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80q18"]
+atlas = ExtResource("1_7g0xc")
+region = Rect2(320, 0, 64, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyanh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bja6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o88ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p78sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x58vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqfok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80q18")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="opening scene" type="Node2D"]
 position = Vector2(1, 0)
@@ -26,16 +73,8 @@ position = Vector2(1, 0)
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_6c8mq")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer3"]
-position = Vector2(1029, 899)
-scale = Vector2(2.14892, 1.93663)
-texture = ExtResource("2_v7tyo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer3"]
+position = Vector2(1024, 896)
+scale = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_jyanh")
 script = ExtResource("3_46jiq")
-
-[node name="Label" type="Label" parent="CanvasLayer3"]
-offset_left = 885.0
-offset_top = 1272.0
-offset_right = 1433.0
-offset_bottom = 1545.0
-theme = SubResource("Theme_h84hp")
-text = "HELP!"

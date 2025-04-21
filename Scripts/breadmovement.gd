@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var friction = 600
 @export var SPEED = 100.0
 const KNOCKBACK = 200.0
@@ -13,6 +12,9 @@ var canmove = true
 var ismoving = false
 var canjump = true
 var doshakebilly = false
+
+var beginninganim = false
+
 @onready var camera = get_node("Camera")
 @onready var cs = get_parent().get_node("chickenstrip")
 func dialogue(text: String, target: Node, center=true,length1=1.0,length2=length1,time=2.0,showforever = false):
@@ -32,7 +34,7 @@ func dialogue(text: String, target: Node, center=true,length1=1.0,length2=length
 # Gravity for jumping
 var gravity = 600
 func grav(delta):
-	if not is_on_floor() and bounce == false:
+	if not is_on_floor() and bounce == false and !beginninganim:
 		velocity.y += gravity * delta
 func jump(delta):
 	# Handle jump.
@@ -86,6 +88,7 @@ func _physics_process(delta):
 func _ready() -> void:
 	#Opening scene
 	if get_tree().get_current_scene().get_name() == "Mouth":
+		beginninganim = true
 		var textbox = get_node("dialogue")
 		var tut = get_parent().get_node("tut/RichTextLabel")
 		textbox.modulate.a = 0
@@ -96,10 +99,21 @@ func _ready() -> void:
 		velocity.y = 0
 		canmove = false
 		canjump = false
-		while not is_on_floor():
-			velocity.y += gravity * get_process_delta_time()
+		while position.x < -48:
+			velocity.x += gravity * get_process_delta_time()
+			velocity.y += 20 * get_process_delta_time()
 			await get_tree().create_timer(get_process_delta_time()).timeout
-		camera.apply_shake(30)
+		while (velocity.x - 1500 * get_process_delta_time()) > 0:
+			velocity.x -= 1500 * get_process_delta_time()
+			velocity.y += 1800 * get_process_delta_time()
+			if is_on_floor():
+				camera.apply_shake(30)
+				break
+			await get_tree().create_timer(get_process_delta_time()).timeout
+			
+		velocity.x = 0
+		beginninganim = false
+		
 		await get_tree().create_timer(1.5).timeout
 		await dialogue("That was close!",textbox,true)
 		await dialogue("I'm so glad I wasn't mechanically digested by the teeth!",textbox,true)
@@ -152,8 +166,8 @@ func _on_jumptut_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D.flip_h = true
 		await dialogue("huh?",get_node("dialogue"),true,0.2,0.2,1.0)
 		await dialogue("YOU'LL GET DIGESTED BY THE AMYLASE ENZYMES!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
-		await dialogue("who are you? and where am i?",get_node("dialogue"),true,0.5,0.5,1.5)
-		await dialogue("I AM A STRIP OF CHICKEN! AND THIS IS THE MOUTH!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
+		await dialogue("who are you? and where am i? and why are you glowing?",get_node("dialogue"),true,0.5,0.5,1.5)
+		await dialogue("I AM A STRIP OF RADIOACTIVE CHICKEN! AND THIS IS THE MOUTH!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
 		await dialogue("I'VE BEEN STUCK HERE 8 YEARS!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
 		await dialogue("SO LISTEN TO ME YOUNGUN!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
 		await dialogue("USE SPACEBAR TO JUMP! AND BE CAREFUL!!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
@@ -183,7 +197,7 @@ func _on_salivary_gland_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(2).timeout
 		cs.get_node("Sprite2D").flip_h = false
 		await get_tree().create_timer(1).timeout
-		await dialogue("THIS IS A SALIVARY GLAND! CAREFUL, SALIVA IS PRODUCED HERE!",cs.get_node("dialogue"),true,0.5,0.5,1.5)
+		await dialogue("THIS IS A SALIVARY GLAND! CAREFUL, SALIVA IS PRODUCED HERE!",cs.get_node("dialogue"),true,0.5,0.5,2.0)
 		get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS).set_trans(Tween.TRANS_ELASTIC).set_loops(1).set_parallel(false).tween_property(camera,"position",Vector2(camera.position.x+150,camera.position.y),2)
 		await get_tree().create_timer(4).timeout
 		get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS).set_trans(Tween.TRANS_ELASTIC).set_loops(1).set_parallel(false).tween_property(camera,"position",Vector2(camera.position.x-150,camera.position.y),2)

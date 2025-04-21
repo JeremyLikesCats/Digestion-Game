@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwq0h5txusgvu"]
+
+[ext_resource type="Texture2D" uid="uid://c0je2rtsrh32f" path="res://Sprites/mainmenu.png" id="1_uyg0x"]
+[ext_resource type="Texture2D" uid="uid://dh2c6q1nfxjd6" path="res://Sprites/Play_game.png" id="2_kcrcy"]
+[ext_resource type="Texture2D" uid="uid://dvyypmqj4pbx0" path="res://Sprites/buttonhovered.png" id="3_or2pc"]
+[ext_resource type="Script" path="res://Scripts/texture_button.gd" id="4_78fio"]
+
+[node name="Main menu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1024, 896)
+scale = Vector2(16, 16)
+texture = ExtResource("1_uyg0x")
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1024.0
+offset_top = 944.0
+offset_right = 2008.0
+offset_bottom = 1272.0
+texture_normal = ExtResource("2_kcrcy")
+texture_hover = ExtResource("3_or2pc")
+stretch_mode = 0
+script = ExtResource("4_78fio")
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer/TextureButton" method="_on_pressed"]
