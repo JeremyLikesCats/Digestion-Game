@@ -86,8 +86,10 @@ func _physics_process(delta):
 	grav(delta)
 	move_and_slide()
 func _ready() -> void:
+	
 	#Opening scene
 	if get_tree().get_current_scene().get_name() == "Mouth":
+		$AnimatedSprite2D.rotation = -230
 		beginninganim = true
 		var textbox = get_node("dialogue")
 		var tut = get_parent().get_node("tut/RichTextLabel")
@@ -99,7 +101,9 @@ func _ready() -> void:
 		velocity.y = 0
 		canmove = false
 		canjump = false
-		while position.x < -48:
+		while position.x < -48 or $AnimatedSprite2D.rotation < -50:
+			if $AnimatedSprite2D.rotation < -50:
+				$AnimatedSprite2D.rotation += 1.75
 			velocity.x += gravity * get_process_delta_time()
 			velocity.y += 20 * get_process_delta_time()
 			await get_tree().create_timer(get_process_delta_time()).timeout
@@ -116,6 +120,9 @@ func _ready() -> void:
 		
 		await get_tree().create_timer(1.5).timeout
 		await dialogue("That was close!",textbox,true)
+		await get_tree().create_timer(1).timeout
+		$AnimatedSprite2D.rotation = 0	
+		await get_tree().create_timer(1.5).timeout
 		await dialogue("I'm so glad I wasn't mechanically digested by the teeth!",textbox,true)
 		
 		#tutorial

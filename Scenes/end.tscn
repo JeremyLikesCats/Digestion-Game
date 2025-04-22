@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5k2ng57ec3or"]
 
 [ext_resource type="Texture2D" uid="uid://27sj7g0dv2ld" path="res://Sprites/end_scene.png" id="1_rq2p5"]
-[ext_resource type="Script" path="res://Scenes/end_anim.gd" id="2_lk6xt"]
+[ext_resource type="Script" path="res://Scripts/end_anim.gd" id="2_lk6xt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpjh6"]
 atlas = ExtResource("1_rq2p5")
@@ -31,5 +31,5 @@ animations = [{
 position = Vector2(1024, 896)
 scale = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_yvk5g")
-frame_progress = 0.698518
+frame_progress = 0.961693
 script = ExtResource("2_lk6xt")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=67 format=3 uid="uid://b5m5jbhge6nfm"]
 
 [ext_resource type="Texture2D" uid="uid://dj61c47n3vo6d" path="res://Sprites/stomachbg.png" id="1_fi0y3"]
-[ext_resource type="Script" path="res://background.gd" id="2_npy7y"]
+[ext_resource type="Script" path="res://Scripts/background.gd" id="2_npy7y"]
 [ext_resource type="Texture2D" uid="uid://dxvo14ogytcyo" path="res://Tileset/tileset1.png" id="2_q3x4p"]
 [ext_resource type="Script" path="res://Scripts/breadmovement.gd" id="3_shf53"]
 [ext_resource type="Texture2D" uid="uid://cowlhn6vnrdfr" path="res://Sprites/bread.png" id="4_4ew8g"]
@@ -886,9 +886,8 @@ position = Vector2(401, 423)
 shape = SubResource("RectangleShape2D_iiy57")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(2130, 14086.1)
-scale = Vector2(-682.756, 23907.4)
+position = Vector2(2130, 26760.1)
+scale = Vector2(-682.756, 49255.3)
 texture = ExtResource("26_8vwsd")
 script = ExtResource("27_0277m")
 
